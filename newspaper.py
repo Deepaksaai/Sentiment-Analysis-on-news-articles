@@ -11,3 +11,12 @@ articles = data.get('articles', [])
 for article in articles:
     print(f"Title(usa): {article['title']}")
     print(f"Description: {article['description']}\n")
+
+#convert it to a csv file
+import csv
+with open('us_headlines.csv', mode='w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Title', 'Description', 'URL'])
+    for article in articles:
+        writer.writerow([article['title'], article['description'], article['url']])
+
